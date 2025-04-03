@@ -57,7 +57,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn versions:set -DnewVersion=${{ steps.name.outputs.BRANCH_NAME }}
-          mvn clean deploy
+          mvn clean deploy -P nexus
 
       - uses: actions/checkout@v2
       - name: Slack Notification

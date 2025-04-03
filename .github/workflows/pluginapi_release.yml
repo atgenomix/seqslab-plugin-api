@@ -54,7 +54,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn versions:set -DnewVersion=${{ github.event.inputs.tags }}
-          mvn clean deploy
+          mvn clean deploy -P nexus
 
       - name: Create Changelog and Release
         id: create_changelog_release
