@@ -19,6 +19,11 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Prepare Version Name
+        id: name
+        run: |
+          echo "::set-output name=BRANCH_NAME::$(echo DEV${GITHUB_REF#refs/heads}-SNAPSHOT | sed 's/\//_/g')"    
+
       - name: Update apt-get
         run: sudo apt-get update
 
@@ -37,9 +42,9 @@ jobs:
           servers: >
             [
               {
-                "id": "nexus",
-                "username": "admin",
-                "password": "${{ secrets.NEXUS_PASSWORD }}"
+                "id": "github",
+                "username": "LIN-Yu-Ting",
+                "password": "${{ secrets.PAT_GITHUB_PACKAGE_TOKEN }}"
               },
               {
                 "id": "gpg.passphrase",
@@ -52,9 +57,26 @@ jobs:
           mvn -version
 
       - name: Build with Maven
-        working-directory: ./plugin-api
         run: |
-          mvn clean deploy -f pom.xml
+          mvn versions:set -DnewVersion=${{ github.event.inputs.tags }}
+          mvn clean deploy
+
+      - name: Create Changelog and Release
+        id: create_changelog_release
+        run: |
+          gh release create ${{ github.event.inputs.tags }} --generate-notes
+          gh release view ${{ github.event.inputs.tags }} --json body -q .body > S_CHANGELOG.md
+          echo 'CHANGELOG<<EOF' >> $GITHUB_ENV
+          cat S_CHANGELOG.md >> $GITHUB_ENV
+          echo 'EOF' >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Release Note
+        run: |
+          gh release edit ${{ github.event.inputs.tags }} --notes "${{env.CHANGELOG}}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/checkout@v2
       - name: Slack Notification

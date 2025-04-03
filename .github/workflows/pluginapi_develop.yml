@@ -50,9 +50,9 @@ jobs:
           mvn -version
 
       - name: Build with Maven
-        working-directory: ./plugin-api
         run: |
-          mvn clean deploy -f pom.xml
+          mvn versions:set -DnewVersion=${{ steps.name.outputs.BRANCH_NAME }}
+          mvn clean deploy
 
       - uses: actions/checkout@v2
       - name: Slack Notification

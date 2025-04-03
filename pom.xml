@@ -74,10 +74,15 @@
 
     <distributionManagement>
         <repository>
+            <id>github</id>
+            <name>GitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/atgenomix/seqslab-plugin-api</url>
+        </repository>
+        <snapshotRepository>
             <id>nexus</id>
             <name>Nexus Staging Repo</name>
             <url>https://nexus-atgx.azurewebsites.net/repository/maven-releases/</url>
-        </repository>
+        </snapshotRepository>
     </distributionManagement>
 
     <build>
