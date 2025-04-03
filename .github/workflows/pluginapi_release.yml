@@ -6,6 +6,9 @@ on:
       tags:
         description: 'Tag: Plugin-Api Version'
         required: true
+      previousTag:
+        description: 'Tag: Previous Tag used for release note generation'
+        default: "auto"
 
 jobs:
   build:
@@ -59,10 +62,10 @@ jobs:
       - name: Create Changelog and Release
         id: create_changelog_release
         run: |
-          gh release create ${{ github.event.inputs.tags }} --generate-notes
-          gh release view ${{ github.event.inputs.tags }} --json body -q .body > S_CHANGELOG.md
+          gh release create ${{ github.event.inputs.tags }} --notes-start-tag ${{ github.event.inputs.previousTag }} --generate-notes --target $(git branch --show-current)
+          gh release view ${{ github.event.inputs.tags }} --json body -q .body > CHANGELOG.md
           echo 'CHANGELOG<<EOF' >> $GITHUB_ENV
-          cat S_CHANGELOG.md >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
