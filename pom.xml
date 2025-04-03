@@ -81,7 +81,7 @@
         <snapshotRepository>
             <id>nexus</id>
             <name>Nexus Staging Repo</name>
-            <url>https://nexus-atgx.azurewebsites.net/repository/maven-releases/</url>
+            <url>https://nexus-atgx.azurewebsites.net/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
