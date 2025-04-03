@@ -4,6 +4,8 @@ on:
   push:
     branches: 
       - '**'
+    paths-ignore:
+      - '.github/workflows/pluginapi_release.yml'
 
 jobs:
   build:
