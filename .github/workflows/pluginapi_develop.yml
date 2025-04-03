@@ -29,6 +29,11 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
+      - name: Prepare Version Name
+        id: name
+        run: |
+          echo "::set-output name=BRANCH_NAME::$(echo DEV${GITHUB_REF#refs/heads}-SNAPSHOT | sed 's/\//_/g')"    
+
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:

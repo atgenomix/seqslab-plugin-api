@@ -19,11 +19,6 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Prepare Version Name
-        id: name
-        run: |
-          echo "::set-output name=BRANCH_NAME::$(echo DEV${GITHUB_REF#refs/heads}-SNAPSHOT | sed 's/\//_/g')"    
-
       - name: Update apt-get
         run: sudo apt-get update
 
@@ -44,7 +39,7 @@ jobs:
               {
                 "id": "github",
                 "username": "LIN-Yu-Ting",
-                "password": "${{ secrets.PAT_GITHUB_PACKAGE_TOKEN }}"
+                "password": "${{ secrets.GITHUB_TOKEN }}"
               },
               {
                 "id": "gpg.passphrase",
