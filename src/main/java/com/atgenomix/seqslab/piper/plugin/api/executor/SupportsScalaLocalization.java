@@ -3,6 +3,9 @@ package com.atgenomix.seqslab.piper.plugin.api.executor;
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
 import com.atgenomix.seqslab.piper.tags.FeatureAfterCall;
 import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.api.java.UDF1;
 
 /**
  * A mix-in interface for {@link Executor}. Executors can implement this interface to support DataFrame preprocessing
@@ -15,5 +18,5 @@ import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
 @DeveloperApi
 @FeatureBeforeCall
 @FeatureAfterCall
-public interface SupportsScalaExecution extends Executor {
+public interface SupportsScalaLocalization extends Executor, UDF1<Dataset<Row>, Dataset<Row>> {
 }
