@@ -116,7 +116,7 @@ public abstract class OperatorContext implements Serializable {
     public abstract String getFqn();
 
     /**
-     * Get Url
+     * Get DataSource
      */
-    public abstract String getUrl();
+    public abstract DataSource getDataSource();
 }
