@@ -32,7 +32,7 @@ public interface PipelineTask {
 
     /**
      * Get the list of Operators applied on given input or output FQN.
-     * @return List<JsonObject>
+     * @return List<Object>
      */
-     public List<JsonObject> getOperators();
+     public List<Object> getOperators();
 }
