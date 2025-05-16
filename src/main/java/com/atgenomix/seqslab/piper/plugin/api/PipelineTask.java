@@ -18,6 +18,7 @@ package com.atgenomix.seqslab.piper.plugin.api;
 
 
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public interface PipelineTask {
 
     /**
      * Get the list of Operators applied on given input or output FQN.
-     * @return List<Object>
+     * @return a list of JsonObject
      */
-     public Object[] getOperators();
+     public JsonObject[] getOperators();
 }
