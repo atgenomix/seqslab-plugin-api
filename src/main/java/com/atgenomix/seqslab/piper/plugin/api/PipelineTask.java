@@ -18,6 +18,8 @@ package com.atgenomix.seqslab.piper.plugin.api;
 
 
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
+import com.google.gson.JsonObject;
+
 
 /**
  * An interface represents the localization, computation, and delocalization workload processes
@@ -26,4 +28,10 @@ import com.atgenomix.seqslab.piper.tags.DeveloperApi;
  */
 @DeveloperApi
 public interface PipelineTask {
+
+    /**
+     * Get the list of Operators applied on given input or output FQN.
+     * @return a list of JsonObject
+     */
+     public JsonObject[] getOperators();
 }

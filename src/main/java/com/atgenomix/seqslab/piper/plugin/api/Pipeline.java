@@ -30,10 +30,14 @@ import java.util.Map;
 public interface Pipeline {
 
     /**
-     * Get the settings of File inputs.
-     * @return A dictionary containing the FQN-value mappings.
+     * Get the settings of Task inputs.
      */
-    Map<String, PiperValue> getDatasets();
+    Map<String, PiperValue> getInputs();
+
+    /**
+     * Get the settings of Task outputs.
+     */
+    Map<String, PiperValue> getOutputs();
 
     /**
      * Get the settings of a pipeline task.
