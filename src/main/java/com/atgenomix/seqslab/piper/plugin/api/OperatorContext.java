@@ -109,4 +109,14 @@ public abstract class OperatorContext implements Serializable {
     public void setProperties(Map<String, Object> properties) {
         properties.forEach((k, v) -> this.properties.merge(k, v, (v1, v2) -> v1));
     }
+
+    /**
+     * Get fqn
+     */
+    public abstract String getFqn();
+
+    /**
+     * Get DataSource
+     */
+    public abstract DataSource getDataSource();
 }
