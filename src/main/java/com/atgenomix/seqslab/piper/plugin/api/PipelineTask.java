@@ -20,7 +20,6 @@ package com.atgenomix.seqslab.piper.plugin.api;
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
 import com.google.gson.JsonObject;
 
-import java.util.List;
 
 /**
  * An interface represents the localization, computation, and delocalization workload processes
