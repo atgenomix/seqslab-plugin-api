@@ -69,12 +69,21 @@ public abstract class PiperContext implements Serializable {
     }
 
     /**
-     * Obtain the dataset object value of an input variable identified by fully-qualified name.
+     * Obtain the piper value of an input variable identified by fully-qualified name.
      * @param fqn The fully-qualified name of an input variable, e.g. myworkflow.task.ref.
-     * @return The dataset object value or null if not found.
+     * @return The piper value or null if not found.
      */
-    public PiperValue getDataset(String fqn) {
-        return pipeline.getDatasets().get(fqn);
+    public PiperValue getInput(String fqn) {
+        return pipeline.getInputs().get(fqn);
+    }
+
+    /**
+     * Obtain the piper value of an output variable identified by fully-qualified name.
+     * @param fqn The fully-qualified name of an output variable, e.g. myworkflow.task.ref.
+     * @return The piper value or null if not found.
+     */
+    public PiperValue getOutput(String fqn) {
+        return pipeline.getOutputs().get(fqn);
     }
 
     /**
