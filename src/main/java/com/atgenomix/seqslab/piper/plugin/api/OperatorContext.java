@@ -111,9 +111,14 @@ public abstract class OperatorContext implements Serializable {
     }
 
     /**
-     * Get fqn
+     * Get the input or output fqn related to the operator.
      */
     public abstract String getFqn();
+
+    /**
+     * Get the fqn prefix at task-level.
+     */
+    public abstract String getTaskFqn();
 
     /**
      * Get DataSource
