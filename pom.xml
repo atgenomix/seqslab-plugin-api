@@ -53,7 +53,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spark.version>3.5.2</spark.version>
+        <spark.version>3.5.3</spark.version>
         <scala.binary.version>2.12</scala.binary.version>
     </properties>
 
