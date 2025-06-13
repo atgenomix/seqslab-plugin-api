@@ -89,7 +89,7 @@
                 <repository>
                     <id>nexus</id>
                     <name>Nexus Staging Repo</name>
-                    <url>https://nexus-atgx.azurewebsites.net/repository/maven-releases/</url>
+                    <url>https://nexus.seqslab.net/repository/maven-releases/</url>
                 </repository>
             </distributionManagement>
         </profile>
