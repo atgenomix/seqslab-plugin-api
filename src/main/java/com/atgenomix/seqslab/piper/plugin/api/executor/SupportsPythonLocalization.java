@@ -19,4 +19,10 @@ import org.apache.spark.sql.api.java.UDF1;
 @FeatureBeforeCall
 @FeatureAfterCall
 public interface SupportsPythonLocalization extends Executor, UDF1<Dataset<Row>, Dataset<Row>> {
+
+    /**
+     * Get the template of Python command.
+     * @return The template of Python command
+     */
+    String getCommandTemplate();
 }
