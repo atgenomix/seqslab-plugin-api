@@ -21,8 +21,9 @@ import org.apache.spark.sql.api.java.UDF1;
 public interface SupportsPythonLocalization extends Executor, UDF1<Dataset<Row>, Dataset<Row>> {
 
     /**
-     * Get the template of Python command.
-     * @return The template of Python command
+     * Prepare user command by the rendered command string.
+     * @param renderedCommand
+     * @return user command
      */
-    String getCommandTemplate();
+    String prepareUserCommand(String renderedCommand);
 }
