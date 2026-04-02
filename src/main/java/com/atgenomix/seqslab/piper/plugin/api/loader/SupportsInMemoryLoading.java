@@ -18,23 +18,18 @@ package com.atgenomix.seqslab.piper.plugin.api.loader;
 
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
 import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
-import org.apache.spark.sql.Row;
 import org.apache.spark.sql.api.java.UDF0;
-
-import java.util.Iterator;
-
+import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 
 /**
  * A mix-in interface for {@link Loader}. Dataset loaders can implement this interface to support
- * transformation of partitioned datasets read by SeqsLab.
+ * copying storage files or directories directly to local file system.
+ * Loaders supporting this interface typically localize datasets that do not require
+ * in-memory processing optimization, e.g. reference files.
+ * This feature is invoked before calling operator function.
  */
 @DeveloperApi
 @FeatureBeforeCall
-public interface SupportsScanPartitions extends Loader, UDF0<Iterator<Row>>  {
-
-    /**
-     * Set the partition loaded by SeqsLab for applying Loader's call function.
-     * @param partition Iterator for the partition
-     */
-    void setPartition(Iterator<Row> partition);
+public interface SupportsInMemoryLoading extends Loader, UDF0<Dataset<Row>> {
 }
