@@ -18,6 +18,7 @@ package com.atgenomix.seqslab.piper.plugin.api.loader;
 
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
 import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
+import org.apache.spark.sql.api.java.UDF0;
 
 /**
  * A mix-in interface for {@link Loader}. Dataset loaders can implement this interface to support
@@ -28,7 +29,7 @@ import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
  */
 @DeveloperApi
 @FeatureBeforeCall
-public interface SupportsCopyToLocal extends Loader {
+public interface SupportsCopyToLocal extends Loader, UDF0<Void> {
 
     /**
      * Sets the local destination path where the datasets will be saved.

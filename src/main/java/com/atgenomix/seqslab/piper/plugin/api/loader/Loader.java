@@ -19,11 +19,8 @@ package com.atgenomix.seqslab.piper.plugin.api.loader;
 import com.atgenomix.seqslab.piper.plugin.api.DataSource;
 import com.atgenomix.seqslab.piper.plugin.api.Operator;
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.api.java.UDF0;
 import org.apache.spark.sql.types.StructType;
 
-import java.util.Iterator;
 
 /**
  * The operator responsible for loading (reading) a dataset into in-memory DataFrame or copying to local host
@@ -48,7 +45,7 @@ import java.util.Iterator;
  * @see SupportsScanPartitions
  */
 @DeveloperApi
-public interface Loader extends Operator, UDF0<Iterator<Row>> {
+public interface Loader extends Operator {
 
     /**
      * Initializes this operator with a specific data source.

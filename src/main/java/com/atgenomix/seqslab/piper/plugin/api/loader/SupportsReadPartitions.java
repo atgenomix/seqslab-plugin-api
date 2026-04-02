@@ -18,6 +18,10 @@ package com.atgenomix.seqslab.piper.plugin.api.loader;
 
 import com.atgenomix.seqslab.piper.tags.DeveloperApi;
 import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
+import org.apache.spark.sql.Row;
+import org.apache.spark.sql.api.java.UDF0;
+
+import java.util.Iterator;
 
 /**
  * A mix-in interface for {@link Loader}. Dataset loaders can implement this interface to support
@@ -27,7 +31,7 @@ import com.atgenomix.seqslab.piper.tags.FeatureBeforeCall;
  */
 @DeveloperApi
 @FeatureBeforeCall
-public interface SupportsReadPartitions extends Loader {
+public interface SupportsReadPartitions extends Loader, UDF0<Iterator<Row>> {
 
     /**
      * Get the number of partitions in the data source.
